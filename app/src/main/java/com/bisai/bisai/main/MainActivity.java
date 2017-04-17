@@ -1,7 +1,9 @@
-package com.bisai.bisai;
+package com.bisai.bisai.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.bisai.bisai.R;
 
 public class MainActivity extends AppCompatActivity {
 

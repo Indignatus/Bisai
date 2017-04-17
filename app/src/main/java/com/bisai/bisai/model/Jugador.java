@@ -1,4 +1,4 @@
-package com.bisai.bisai.controller.model;
+package com.bisai.bisai.model;
 
 /**
  * Created by sergi on 27/03/2017.

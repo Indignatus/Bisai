@@ -1,4 +1,4 @@
-package com.bisai.bisai.controller.model;
+package com.bisai.bisai.model;
 
 import java.util.Arrays;
 
