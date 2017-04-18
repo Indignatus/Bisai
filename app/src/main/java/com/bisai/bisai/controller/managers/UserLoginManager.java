@@ -5,6 +5,10 @@ import android.util.Log;
 
 import com.bisai.bisai.model.UserToken;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class UserLoginManager {
     private static UserLoginManager ourInstance;
     private UserToken userToken;

@@ -3,6 +3,16 @@ package com.bisai.bisai.controller.managers;
 import android.content.Context;
 import android.widget.Toast;
 
+import com.bisai.bisai.controller.services.RegisterService;
+import com.bisai.bisai.controller.util.CustomProperties;
+import com.bisai.bisai.model.UserDTO;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * Created by sergi on 17/04/2017.
  */
@@ -35,7 +45,7 @@ public class RegisterManager {
     }
 
     /* POST - REGISTER ACCOUNT */
-
+/*
     public synchronized void registerAccount(final RegisterCallback registerCallback, UserDTO userDTO) {
         Call<Void> call = registerService.registerAccount(userDTO);
         call.enqueue(new Callback<Void>() {
@@ -57,4 +67,6 @@ public class RegisterManager {
             }
         });
     }
+}
+*/
 }

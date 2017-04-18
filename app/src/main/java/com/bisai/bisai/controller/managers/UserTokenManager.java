@@ -3,10 +3,10 @@ package com.bisai.bisai.controller.managers;
 import android.util.Base64;
 import android.util.Log;
 
-import com.taniafontcuberta.basketball.controller.services.TokenService;
-import com.taniafontcuberta.basketball.model.UserToken;
-import com.taniafontcuberta.basketball.util.CustomProperties;
 
+import com.bisai.bisai.controller.util.CustomProperties;
+import com.bisai.bisai.controller.services.TokenService;
+import com.bisai.bisai.model.UserToken;
 import java.io.UnsupportedEncodingException;
 
 import retrofit2.Call;

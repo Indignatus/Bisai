@@ -1,5 +1,13 @@
 package com.bisai.bisai.controller.services;
 
+import com.bisai.bisai.model.UserToken;
+
+import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Header;
+import retrofit2.http.POST;
+
 public interface TokenService {
     @POST("/oauth/token")
     @FormUrlEncoded

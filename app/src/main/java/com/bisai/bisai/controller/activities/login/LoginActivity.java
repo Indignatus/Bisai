@@ -23,6 +23,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.bisai.bisai.R;
+import com.bisai.bisai.controller.managers.LoginCallback;
+import com.bisai.bisai.controller.managers.UserLoginManager;
+import com.bisai.bisai.main.MainActivity;
+import com.bisai.bisai.model.UserToken;
+
 
 /**
  * A login screen that offers login via username/password.
@@ -30,7 +36,7 @@ import android.widget.TextView;
 public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
     // UI references.
-    private AutoCompleteTextView mEmailView;
+    private EditText mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -40,12 +46,12 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.username);
-        mPasswordView = (EditText) findViewById(R.id.password);
+        mEmailView = (EditText) findViewById(R.id.usuario_name);
+        mPasswordView = (EditText) findViewById(R.id.usuario_pass);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if (id == R.id.go || id == EditorInfo.IME_NULL) {
                     attemptLogin();
                     return true;
                 }
@@ -53,7 +59,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.user_log_in_button);
+        Button mEmailSignInButton = (Button) findViewById(R.id.go);
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +67,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
             }
         });
 
+        /*
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,9 +76,9 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
                 startActivity(i);
             }
         });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
+*/
+       // mLoginFormView = findViewById(R.id.login_form);
+       // mProgressView = findViewById(R.id.login_progress);
     }
 
     /**
@@ -93,14 +100,14 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-            mPasswordView.setError(getString(R.string.error_invalid_password));
+           // mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
 
         // Check for a valid username address.
         if (TextUtils.isEmpty(username)) {
-            mEmailView.setError(getString(R.string.error_field_required));
+           // mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
         }
@@ -136,7 +143,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
         // TODO: Gestionar los diversos tipos de errores. Por ejemplo, no se ha podido conectar correctamente.
         showProgress(false);
-        mPasswordView.setError(getString(R.string.error_incorrect_username_or_password));
+        //mPasswordView.setError(getString(R.string.error_incorrect_username_or_password));
         mPasswordView.requestFocus();
     }
 
