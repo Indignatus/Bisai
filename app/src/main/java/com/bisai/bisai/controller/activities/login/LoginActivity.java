@@ -1,9 +1,5 @@
 package com.bisai.bisai.controller.activities.login;
 
-/**
- * Created by sergi on 06/04/2017.
- */
-
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -16,7 +12,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -24,11 +19,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.bisai.bisai.R;
+import com.bisai.bisai.controller.activities.main.MainActivity;
 import com.bisai.bisai.controller.managers.LoginCallback;
 import com.bisai.bisai.controller.managers.UserLoginManager;
-import com.bisai.bisai.main.MainActivity;
 import com.bisai.bisai.model.UserToken;
-
 
 /**
  * A login screen that offers login via username/password.
@@ -36,7 +30,7 @@ import com.bisai.bisai.model.UserToken;
 public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
     // UI references.
-    private EditText mEmailView;
+    private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
@@ -46,12 +40,12 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
-        mEmailView = (EditText) findViewById(R.id.usuario_name);
-        mPasswordView = (EditText) findViewById(R.id.usuario_pass);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.username);
+        mPasswordView = (EditText) findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.go || id == EditorInfo.IME_NULL) {
+                if (id == R.id.login || id == EditorInfo.IME_NULL) {
                     attemptLogin();
                     return true;
                 }
@@ -59,7 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
             }
         });
 
-        Button mEmailSignInButton = (Button) findViewById(R.id.go);
+        Button mEmailSignInButton = (Button) findViewById(R.id.user_log_in_button);
         mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -67,7 +61,6 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
             }
         });
 
-        /*
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,9 +69,9 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
                 startActivity(i);
             }
         });
-*/
-       // mLoginFormView = findViewById(R.id.login_form);
-       // mProgressView = findViewById(R.id.login_progress);
+
+        mLoginFormView = findViewById(R.id.login_form);
+        mProgressView = findViewById(R.id.login_progress);
     }
 
     /**
@@ -100,14 +93,14 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-           // mPasswordView.setError(getString(R.string.error_invalid_password));
+            mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
         }
 
         // Check for a valid username address.
         if (TextUtils.isEmpty(username)) {
-           // mEmailView.setError(getString(R.string.error_field_required));
+            mEmailView.setError(getString(R.string.error_field_required));
             focusView = mEmailView;
             cancel = true;
         }
@@ -143,7 +136,7 @@ public class LoginActivity extends AppCompatActivity implements LoginCallback {
 
         // TODO: Gestionar los diversos tipos de errores. Por ejemplo, no se ha podido conectar correctamente.
         showProgress(false);
-        //mPasswordView.setError(getString(R.string.error_incorrect_username_or_password));
+        mPasswordView.setError(getString(R.string.error_incorrect_username_or_password));
         mPasswordView.requestFocus();
     }
 

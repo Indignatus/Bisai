@@ -45,7 +45,7 @@ public class RegisterManager {
     }
 
     /* POST - REGISTER ACCOUNT */
-/*
+
     public synchronized void registerAccount(final RegisterCallback registerCallback, UserDTO userDTO) {
         Call<Void> call = registerService.registerAccount(userDTO);
         call.enqueue(new Callback<Void>() {
@@ -68,5 +68,4 @@ public class RegisterManager {
         });
     }
 }
-*/
-}
+

@@ -1,4 +1,4 @@
-package com.bisai.bisai.main;
+package com.bisai.bisai.controller.activities.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
